@@ -2,16 +2,13 @@
 <odoo>
 
 <template id="report_saleorder_document_customised">
-<style>  
-</style>
-<style>  
-</style>
+
     <t t-call="web.external_layout">
         <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
         <t t-set="address">
             <div style="margin-left:80px;text-align:right; direction: rtl;">
-                <p>رقم الطلب: <span t-esc="str(doc.name)"/></p>
-                <p>تاريخ الطلب: <span t-esc="doc.date_order.strftime('%Y/%m/%d')"/></p>
+                <p class="orisdi">رقم الطلب: <span t-esc="str(doc.name)"/></p>
+                <p class="orisdi">تاريخ الطلب: <span t-esc="doc.date_order.strftime('%Y/%m/%d')"/></p>
             </div>
         </t>
         <t t-set="information_block">
@@ -26,6 +23,15 @@
             <p t-if="doc.partner_id.vat"><t t-esc="doc.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="doc.partner_id.vat"/></p>
         </t>
         <div class="page">
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Amiri&amp;display=swap');
+
+                    .orisdi{
+                        font-family:"Amiri"
+
+
+                    }
+                </style>
             <div class="oe_structure"/>
 
             <h2 class="mt16">
@@ -69,17 +75,17 @@
                 <thead style="border-top: solid 2px black; border-bottom: solid 2px black; opacity: 1;">
                     <tr style="border-top: solid 2px black; border-bottom: solid 2px black; opacity: 1;">
                         <th name="th_image" class="text-center"><span/></th>
-                        <th name="th_description" class="text-left">تفاصيل المواد</th>
-                        <th name="th_quantity" class="text-right">الكمية</th>
-                        <th name="th_priceunit" class="text-right">السعر</th>
+                        <th name="th_description" class="text-left orisdi">تفاصيل المواد</th>
+                        <th name="th_quantity" class="text-right orisdi">الكمية</th>
+                        <th name="th_priceunit" class="text-right orisdi">السعر</th>
                         <th name="th_discount" t-if="display_discount" class="text-right" groups="product.group_discount_per_so_line">
                             <span>Disc.%</span>
                         </th>
                         
                         <!-- <th name="th_taxes" class="text-right">Taxes</th> -->
-                        <th name="th_subtotal" class="text-right">
-                            <t groups="account.group_show_line_subtotals_tax_excluded">المجموع</t>
-                            <t groups="account.group_show_line_subtotals_tax_included">المجموع الكلي</t>
+                        <th name="th_subtotal" class="text-right orisdi">
+                            <t groups="account.group_show_line_subtotals_tax_excluded" class="orisdi">المجموع</t>
+                            <t groups="account.group_show_line_subtotals_tax_included" class="orisdi">المجموع الكلي</t>
                         </th>
                     </tr>
                 </thead>
@@ -148,8 +154,8 @@
                 <div id="total" class="row" name="total">
                     <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
                         <table class="table table-sm">
-                            <tr class="border-black o_subtotal" style="">
-                                <td name="td_amount_untaxed_label"><strong>المجموع</strong></td>
+                            <tr class="border-black o_subtotal orisdi" >
+                                <td name="td_amount_untaxed_label" class="orisdi"><strong class="orisdi">المجموع</strong></td>
                                 <td name="td_amount_untaxed" class="text-right">
                                     <span t-esc="'{:,}'.format(int(doc.amount_untaxed))"/>
                                 </td>
@@ -176,7 +182,7 @@
                                 </tr>
                             </t>
                             <tr class="border-black o_total">
-                                <td name="td_amount_total_label"><strong>المجموع الكلي</strong></td>
+                                <td name="td_amount_total_label" class="orisdi"><strong>المجموع الكلي</strong></td>
                                 <td name="td_amount_total" class="text-right">
                                     <span t-esc="'{:,}'.format(int(doc.amount_total))"/>
                                 </td>
@@ -195,12 +201,12 @@
                     </div>
                     <div style="text-align:center;" class="col-4">
                             <!-- <t t-esc="doc.text2"/> -->
-                            <h3 style="font-size:16px;"> التسوق اريح وارخص من اورزدي</h3>
+                            <h3 style="font-size:20px;" class="orisdi"> التسوق اريح وارخص من اورزدي</h3>
                             
                     </div>
                     <div style="text-align:center;" class="col-4">
                             <!-- <t t-esc="doc.text1"/> -->
-                            <h3>شكرا جزيلاً لتسوقكم من اورزدي</h3>
+                            <h3 class="orisdi">شكرا جزيلاً لتسوقكم من اورزدي</h3>
                     </div>
             </div>
             <br/>
