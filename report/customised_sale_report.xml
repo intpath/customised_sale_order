@@ -26,10 +26,10 @@
         </t>
         <div class="page">
                 <style>
-                    @import url('https://fonts.googleapis.com/css2?family=Amiri&amp;display=swap');
+                    @import url('https://fonts.googleapis.com/earlyaccess/notonaskharabicui.css');
 
                     .orisdi{
-                        font-family:"Amiri"
+                        font-family:"Noto Naskh Arabic UI", sans-serif;
 
 
                     }
